@@ -1,0 +1,40 @@
+{
+  "kind": "Pod",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "tiger-adapter-pod",
+    "labels": {
+      "context": "docker-k8s-lab",
+      "name": "tiger-adapter-pod"
+    }
+  },
+  "spec": {
+    "containers": [
+      {
+        "name": "tiger-adapter",
+        "image": "eliafengar/tiger_adapter:v1",
+        "env": [
+          {
+            "name": "ADAPTER_APPLICATION_NAME",
+            "value": "tiger"
+          },
+          {
+            "name": "ADAPTER_FETCH_STATS_INTERVAL",
+            "value": "15"
+          },
+          {
+            "name": "KUBERNETES_PROXY_API_HOST",
+            "value": "192.168.1.29"
+          },
+          {
+            "name": "KUBERNETES_PROXY_API_PORT",
+            "value": "8080"
+          }
+        ],
+        "securityContext": {
+          "privileged": true
+        }
+      }
+    ]
+  }
+}

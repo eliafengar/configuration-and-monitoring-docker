@@ -1,0 +1,43 @@
+{
+    "kind": "Pod",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "mongodb-pod",
+        "labels": {
+            "context": "docker-k8s-lab",
+            "name": "mongodb-pod"
+        }
+    },
+    "spec": {
+        "volumes": [
+            {
+                "name": "data-db-volume",
+                "hostPath": {
+                    "path": "/home/demouser/data/db"
+                }
+            }
+        ],
+        "containers": [
+            {
+                "name": "mongodb",
+                "image": "eliafengar/mongodb:v1",
+                "ports": [
+                    {
+                        "containerPort": 27017,
+                        "protocol": "TCP"
+                    }
+                ],
+                "volumeMounts": [
+                    {
+                        "name": "data-db-volume",
+                        "mountPath": "/data/db"
+                    }
+                ],
+                "securityContext":{
+                    "privileged": true
+                }
+            }
+        ]
+    }
+}
+

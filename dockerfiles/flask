@@ -1,0 +1,16 @@
+FROM ubuntu:14.04
+
+MAINTAINER Eli Afengar "eli.afengar@outlook.com"
+
+RUN apt-get update -y
+RUN apt-get install -y python-pip python-dev build-essential python3-pip python3-dev
+
+COPY ./source/configuration-and-monitoring /configuration-and-monitoring
+
+WORKDIR /configuration-and-monitoring
+
+RUN pip3 install -r requirements.txt
+
+ENTRYPOINT ["python3"]
+
+CMD ["runserver.py"]

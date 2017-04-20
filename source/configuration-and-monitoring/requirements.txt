@@ -1,0 +1,6 @@
+flask
+pymongo
+pykube
+#libvirt-python
+pydocumentdb
+azure==2.0.0rc6

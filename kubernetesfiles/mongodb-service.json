@@ -1,0 +1,27 @@
+{
+    "kind": "Service",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "mongodb-service",
+        "labels": {
+            "context": "docker-k8s-lab",
+            "name": "mongodb-pod"
+        }
+    },
+    "spec": {
+        "ports": [
+            {
+                "protocol": "TCP",
+                "port": 27017,
+                "targetPort": 27017
+            }
+        ],
+        "selector": {
+            "context": "docker-k8s-lab",
+            "name": "mongodb-pod"
+        },
+        "externalIPs": [
+            "192.168.1.29"
+        ]
+    }
+}

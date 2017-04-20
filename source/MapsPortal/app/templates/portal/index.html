@@ -1,0 +1,64 @@
+﻿<html>
+<head>
+    <title>Maps Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='portal/css/index.css') }}" rel="stylesheet" media="screen">
+    <link href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery/js/jquery-3.0.0.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='portal/js/portal.js') }}"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/portal/maps">Maps Portal</a>
+        </div>
+    </div>
+</nav>
+
+
+<div id="main" class="container">
+    <h2>Maps Portal</h2>
+    <div class="starter-template">
+        <div class="row">
+
+            <div id="productsDiv" class="col-md-3">
+                <label>Product:</label><br/>
+                {% if products %}
+                <select id="productsDropDown" class="form-control has-error">
+                    <option disabled selected>-- select an option --</option>
+                    {% for product in products %}
+                    <option value="{{product.name}}">{{product.name}}</option>
+                    {% endfor %}
+                </select>
+                {% else %}
+                <p>No Products are available.</p>
+                {% endif %}
+            </div>
+            <div id="projectsDiv" class="col-md-3">
+                <label>Projects:</label><br/>
+                <select id="projectsDropDown" class="form-control">
+                    <option disabled selected>-- select an option --</option>
+                </select>
+            </div>
+            <div id="versionsDiv" class="col-md-3">
+                <label>Maps:</label><br/>
+                <select id="mapsDropdown" class="form-control">
+                    <option disabled selected>-- select an option --</option>
+                </select>
+            </div>
+            <div class="col-md-3"><br/><a class="btn btn-warning" onclick="updateMaps()">Refresh Maps</a></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

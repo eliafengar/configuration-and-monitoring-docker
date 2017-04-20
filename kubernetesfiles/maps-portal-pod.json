@@ -1,0 +1,32 @@
+{
+    "kind": "Pod",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "maps-portal-pod",
+        "labels": {
+            "context": "docker-k8s-lab",
+            "name": "maps-portal-pod"
+        }
+    },
+    "spec": {
+        "containers": [
+            {
+                "name": "maps-portal",
+                "image": "eliafengar/maps-portal:v1",
+                "ports": [
+            	        {
+                        "containerPort": 9010,
+                        "protocol": "TCP"
+                    }
+                ],
+                "env": [
+                    {
+                        "name": "SERVER_PORT",
+                        "value": "9010"
+                    }
+                ]
+            }
+        ]
+    }
+}
+
